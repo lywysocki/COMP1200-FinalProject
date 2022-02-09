@@ -1,1 +1,1 @@
-# COMP1200-Final-Project
+# COMP1200-FinalProject
