@@ -12,6 +12,8 @@ import java.nio.file.Paths;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -72,46 +74,53 @@ public class Main extends Application {
 			 * creates non-eduble txtArea
 			 */
 			TextArea textArea = new TextArea(txt);
-			Scene scene = new Scene(textArea);
+			Scene scene = new Scene(textArea, 1000, 750);
 			textArea.setEditable(true);
-///////////////////////////////////////////////////////////////////////////////////////////			
-			
-			//Label for education
-		      Label label = new Label("Stock Trends:");
-		      Font font = Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12);
-		      label.setFont(font);
-		      //Creating a table view
-		      TableView<String> table = new TableView<String>();
-		      //Creating columns
-		      TableColumn symbolCol = new TableColumn("Symbol");
-		      TableColumn nameCol = new TableColumn("Name");
-		      TableColumn lastPriceCol = new TableColumn("Last Price");
-		      TableColumn changeCol = new TableColumn("Change");
-		      TableColumn pcentChangeCol = new TableColumn("% Change");
-		      nameCol.setPrefWidth(100);
-		      //Adding data to the table
-		      ObservableList<String> list = FXCollections.observableArrayList();
-		      table.setItems(list);
-		      table.getColumns().addAll(symbolCol, nameCol, lastPriceCol, changeCol, pcentChangeCol);
-		      //Setting the size of the table
-		      table.setMaxSize(1000, 1000);
-		      Button button2= new Button("Go to scene 1");
-		      button2.setOnAction(e -> primaryStage.setScene(scene));
-		      
-		      VBox vbox = new VBox();
-		      vbox.setSpacing(5);
-		      vbox.setPadding(new Insets(10, 50, 50, 60));
-		      vbox.getChildren().addAll(label, table, button2);
-		      //Setting the scene
-		      Scene scene2= new Scene(vbox, 595, 230);
-		      primaryStage.setTitle("Simple Search");
-		      primaryStage.setScene(scene2);
-			
-			
+///////////////////////////////////////////////////////////////////////////////////////////
+			//Label for the stock trends
+		    Label label = new Label("Stock Trends:");
+		    Font font = Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12);
+		    label.setFont(font);
+		    
+		    //Creating a table view
+		    TableView<String> table = new TableView<String>();
+		    
+		    //Creating columns for each data-field
+		    TableColumn symbolCol = new TableColumn("Symbol");
+		    TableColumn nameCol = new TableColumn("Name");
+		    TableColumn lastPriceCol = new TableColumn("Last Price");
+		    TableColumn changeCol = new TableColumn("Change");
+		    TableColumn pcentChangeCol = new TableColumn("% Change");
+		    nameCol.setPrefWidth(100);
+		    
+		    //Adding data to the table
+		    ObservableList<String> list = FXCollections.observableArrayList();
+		    table.setItems(list);
+		    table.getColumns().addAll(symbolCol, nameCol, lastPriceCol, changeCol, pcentChangeCol);
+		    
+		    //Setting the size of the table
+		    table.setMaxSize(1000, 1000);
+		    Button button2= new Button("Go to scene 1");
+		    button2.setOnAction(new EventHandler<ActionEvent>() {
 
-			primaryStage.show();
+				@Override
+				public void handle(ActionEvent event) {
+					primaryStage.setScene(scene);
+					primaryStage.centerOnScreen();
+				}
+		    });
+		    VBox vbox = new VBox();
+		    vbox.setSpacing(5);
+		    vbox.setPadding(new Insets(10, 50, 50, 60));
+		    vbox.getChildren().addAll(label, table, button2);
+		    
+		    //Setting the scene & the primary stage
+		    Scene scene2= new Scene(vbox, 595, 230);
+		    primaryStage.setTitle("Simple Search");
+		    primaryStage.setScene(scene2);
+		    primaryStage.centerOnScreen();
+		    primaryStage.show();
 			
-	
 
 		} catch(Exception e) {
 			e.printStackTrace();
