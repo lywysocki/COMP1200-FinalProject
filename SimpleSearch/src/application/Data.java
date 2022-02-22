@@ -1,23 +1,36 @@
 package application;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 public class Data {
-	final String URL = "https://finance.yahoo.com/trending-tickers"
-	
-	try {
-		Document doc = Jsoup.connect(URL).get();
-
-		for (Element row : ) {
+	String url = "";
 			
+	public String Data(String s) {
+		try {
+			url = s;
+			Document doc = Jsoup.connect(url).get();
+			BufferedWriter  writer = null;
+	        try {
+	        	writer = new BufferedWriter( new FileWriter("C:\\Users\\wysockil\\OneDrive - Wentworth Institute of Technology\\Desktop\\Stocks-HTML.txt"));
+	        	writer.write(doc.toString());
+
+	        } catch ( IOException e) {
+	        	
+	        }
+			 
+			
+		} catch (Exception ex){
+			ex.printStackTrace();
 		}
-
-
-	} catch (Exception ex) {
+		
+		return "C:\\Users\\wysockil\\OneDrive - Wentworth Institute of Technology\\Desktop\\Stocks-HTML.txt";
 		
 	}
 
 }
+
