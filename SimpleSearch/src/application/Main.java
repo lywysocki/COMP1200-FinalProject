@@ -127,6 +127,10 @@ public class Main extends Application {
 		}
 	}
 	
+	/**
+	 * starts launch function
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}
