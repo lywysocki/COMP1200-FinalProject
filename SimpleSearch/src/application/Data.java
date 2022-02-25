@@ -8,7 +8,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 /**
- * @version 1.0.0 2022-02-25 Initial implementation
+ * @version 1.0.1 2022-02-25 Initial implementation
  */
 public class Data {
 	String url = "";

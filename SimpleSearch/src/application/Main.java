@@ -30,7 +30,7 @@ import javafx.scene.text.FontWeight;
 
 
 /**
- * @version 1.0.0 2022-02-25 Initial implementation
+ * @version 1.0.1 2022-02-25 Initial implementation
  */
 public class Main extends Application {
 	@Override
