@@ -29,6 +29,9 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 
 
+/**
+ * @version 1.0.0 2022-02-25 Initial implementation
+ */
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {

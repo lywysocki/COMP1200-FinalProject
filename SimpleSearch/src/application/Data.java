@@ -7,6 +7,9 @@ import java.io.IOException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
+/**
+ * @version 1.0.0 2022-02-25 Initial implementation
+ */
 public class Data {
 	String url = "";
 			
@@ -25,10 +28,9 @@ public class Data {
 	        	writer.write(doc.toString());
 	        	writer.close(); // prevents data leaks
 
-	        } catch ( IOException e) {
-	        	// placeholder
+	        } catch ( IOException ex) {
+	            System.out.println("There is a failure during reading, writing, and searching file or directory operations.");
 	        }
-			 
 			
 		} catch (Exception ex){
 			ex.printStackTrace();
