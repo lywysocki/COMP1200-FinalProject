@@ -3,6 +3,10 @@ package application;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -20,12 +24,14 @@ public class Data {
 	 */
 	public String Data(String s) {
 		try {
-			this.url = s;
-			Document doc = Jsoup.connect(url).get();
+			//this.url = s;
+			//Document doc = s;
+
 			BufferedWriter  writer = null;
 	        try {
-	        	writer = new BufferedWriter( new FileWriter("C:\\Users\\wysockil\\OneDrive - Wentworth Institute of Technology\\Desktop\\Stocks-HTML.txt"));
-	        	writer.write(doc.toString());
+	        	//"C:\\Users\\wysockil\\OneDrive - Wentworth Institute of Technology\\Desktop\\Stocks-HTML.txt"
+	        	writer = new BufferedWriter( new FileWriter("C:\\Users\\dyere1\\Desktop\\HTML-SS.txt"));
+	        	//writer.write(doc.toString());
 	        	writer.close(); // prevents data leaks
 
 	        } catch ( IOException ex) {
@@ -36,9 +42,13 @@ public class Data {
 			ex.printStackTrace();
 		}
 		
-		return "C:\\Users\\wysockil\\OneDrive - Wentworth Institute of Technology\\Desktop\\Stocks-HTML.txt";
+		
+		
+		//"C:\\Users\\wysockil\\OneDrive - Wentworth Institute of Technology\\Desktop\\Stocks-HTML.txt"
+		return "C:\\Users\\dyere1\\Desktop\\HTML-SS.txt";
 		
 	}
+	
 
 }
 
