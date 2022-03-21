@@ -57,12 +57,7 @@ public class Main extends Application {
 						
 						e.printStackTrace();
 					}
-					String price = data[0];
-					String percentChange = data[1];
-					String change = data[2];
-					String symbol = data[3];
-					String name = data[4];
-				
+
 				/*
 				 * Scene 2 - Stock information based on input
 				 */
@@ -74,7 +69,9 @@ public class Main extends Application {
 				    //Creating a table view
 				    TableView<TableData> table = new TableView<TableData>();
 				    final ObservableList<TableData> theData = FXCollections.observableArrayList(
-				    	new TableData(price, name, percentChange, change, symbol)
+				    	//table order: sym, name, price, change, percent change
+				    	//array order: price, percentChange, change, symbol, name
+				    	new TableData(data[3], data[4], data[1], data[2], data[3])
 				    );
 				    
 				    //Creating columns for each data-field
