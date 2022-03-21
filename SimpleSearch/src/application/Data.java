@@ -24,28 +24,13 @@ public class Data {
 	 */
 	public String Data(String s) {
 		try {
-			//this.url = s;
-			//Document doc = s;
-
-			BufferedWriter  writer = null;
-	        try {
-	        	//"C:\\Users\\dyere1\\Desktop\\HTML-SS.txt"
-	        	writer = new BufferedWriter( new FileWriter("C:\\Users\\wysockil\\OneDrive - Wentworth Institute of Technology\\Desktop\\Stocks-HTML.txt"));
-	        	//writer.write(doc.toString());
-	        	writer.close(); // prevents data leaks
-
-	        } catch ( IOException ex) {
-	            System.out.println("There is a failure during reading, writing, and searching file or directory operations.");
-	        }
+			System.out.printf("Placeholder");
 			
 		} catch (Exception ex){
 			ex.printStackTrace();
 		}
 		
-		
-		
-		//"C:\\Users\\dyere1\\Desktop\\HTML-SS.txt"
-		return "C:\\\\Users\\\\wysockil\\\\OneDrive - Wentworth Institute of Technology\\\\Desktop\\\\Stocks-HTML.txt";
+		return s;
 		
 	}
 	

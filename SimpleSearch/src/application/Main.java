@@ -49,6 +49,7 @@ public class Main extends Application {
 		
 		try {
 			
+			
 			/**
 			  * creates data object & gets txt file url 
 			  */
@@ -94,34 +95,81 @@ public class Main extends Application {
 				System.out.println("price: " + price + " Percent Change: " + percentChange + " Market Change: " + change + " Symbol: " + symbol + " Name: " + name);
 			}
 			
-			/*
-			 * Constructs java window pane
-			 */
-			BorderPane root = new BorderPane();
 
-			/* txt input scene
-			 * 
+			//Label for the stock trends
+		    Label label = new Label("Stock Trends:");
+		    Font font = Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12);
+		    label.setFont(font);
+		    
+		    //Creating a table view
+		    TableView<String> table = new TableView<String>();
+		    
+		    //Creating columns for each data-field
+		    TableColumn symbolCol = new TableColumn("Symbol");
+		    TableColumn nameCol = new TableColumn("Name");
+		    TableColumn lastPriceCol = new TableColumn("Last Price");
+		    TableColumn changeCol = new TableColumn("Change");
+		    TableColumn pcentChangeCol = new TableColumn("% Change");
+		    nameCol.setPrefWidth(100);
+		    
+		    //Adding data to the table
+		    ObservableList<String> list = FXCollections.observableArrayList();
+		    table.setItems(list);
+		    table.getColumns().addAll(symbolCol, nameCol, lastPriceCol, changeCol, pcentChangeCol);
+		    
+		    //Setting the size of the table
+		    table.setMaxSize(1000, 1000);
+		    
+		    VBox vbox = new VBox();
+		    vbox.setSpacing(5);
+		    vbox.setPadding(new Insets(10, 50, 50, 60));
+		    vbox.getChildren().addAll(label, table);
+		    //Setting the scene
+		    Scene scene2 = new Scene(vbox, 595, 230);
+
+		
+		/*
+		 * Scene 1 - User input to Search
+		 */
+			/* 
+			 * objects to be placed on stage
 			 */
 			Label prompt = new Label("What stock overveiw would you like to see?");
 			TextField inputSearch = new TextField();
 			inputSearch.setPromptText("Enter stock symbol");
 			inputSearch.setFocusTraversable(false);
+			Label symbol = new Label("Symbol:");
 			Button enter = new Button("Search");
+			//ActionEvent for button to display results on new scene
+			enter.setOnAction(new EventHandler<ActionEvent>() {
+
+				@Override
+				public void handle(ActionEvent event) {
+					String symToSearch = inputSearch.getText();
+					primaryStage.setScene(scene2);
+					primaryStage.centerOnScreen();					
+				}
+				
+			});
 			
+			/*
+			 * styling & position of elements
+			 */
 			VBox vbox1 = new VBox(10);
 			vbox1.setAlignment(Pos.CENTER);
 			vbox1.getChildren().addAll(prompt);
 			HBox hbox1 = new HBox(10);
 			hbox1.setAlignment(Pos.CENTER);
-			hbox1.getChildren().addAll(inputSearch, enter);
-			
+			hbox1.getChildren().addAll(symbol,inputSearch, enter);
+
+			BorderPane root = new BorderPane();
 			root.setTop(vbox1);
 			root.setCenter(hbox1);
 		  
 			//Setting the scene & the primary stage
-		    Scene scene2= new Scene(root, 300, 300);
+		    Scene scene1= new Scene(root, 500, 300);
 		    primaryStage.setTitle("Simple Search");
-		    primaryStage.setScene(scene2);
+		    primaryStage.setScene(scene1);
 		    primaryStage.centerOnScreen();
 		    primaryStage.show();
 
