@@ -97,7 +97,7 @@ public class Main extends Application {
 					table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 				    table.getColumns().addAll(symbolCol, nameCol, lastPriceCol, changeCol, pcentChangeCol);
 				    
-				    //Setting the size of the table!
+				    //Setting the size of the table
 				    table.setMaxSize(1000, 1000);
 				    					    
 				    VBox vbox = new VBox();
