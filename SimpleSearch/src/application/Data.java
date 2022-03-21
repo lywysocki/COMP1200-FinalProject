@@ -29,8 +29,8 @@ public class Data {
 
 			BufferedWriter  writer = null;
 	        try {
-	        	//"C:\\Users\\wysockil\\OneDrive - Wentworth Institute of Technology\\Desktop\\Stocks-HTML.txt"
-	        	writer = new BufferedWriter( new FileWriter("C:\\Users\\dyere1\\Desktop\\HTML-SS.txt"));
+	        	//"C:\\Users\\dyere1\\Desktop\\HTML-SS.txt"
+	        	writer = new BufferedWriter( new FileWriter("C:\\Users\\wysockil\\OneDrive - Wentworth Institute of Technology\\Desktop\\Stocks-HTML.txt"));
 	        	//writer.write(doc.toString());
 	        	writer.close(); // prevents data leaks
 
@@ -44,8 +44,8 @@ public class Data {
 		
 		
 		
-		//"C:\\Users\\wysockil\\OneDrive - Wentworth Institute of Technology\\Desktop\\Stocks-HTML.txt"
-		return "C:\\Users\\dyere1\\Desktop\\HTML-SS.txt";
+		//"C:\\Users\\dyere1\\Desktop\\HTML-SS.txt"
+		return "C:\\\\Users\\\\wysockil\\\\OneDrive - Wentworth Institute of Technology\\\\Desktop\\\\Stocks-HTML.txt";
 		
 	}
 	
