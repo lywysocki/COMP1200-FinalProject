@@ -20,6 +20,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -27,8 +28,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -45,10 +48,6 @@ public class Main extends Application {
 		String data = "";
 		
 		try {
-			/*
-			 * Constructs java window pane
-			 */
-			BorderPane root = new BorderPane();
 			
 			/**
 			  * creates data object & gets txt file url 
@@ -95,27 +94,36 @@ public class Main extends Application {
 				System.out.println("price: " + price + " Percent Change: " + percentChange + " Market Change: " + change + " Symbol: " + symbol + " Name: " + name);
 			}
 			
-			TextInputDialog stockSearched = new TextInputDialog("Enter Stock Symbol");
-			stockSearched.setContentText("Symbol: ");
-			stockSearched.setHeaderText("JavaFX Input Dialog Example");
-	         
-	        Button button = new Button("JavaFX Input Dialog");
-	         
-	        button.setOnAction(e -> {
-	        	stockSearched.show();         
-	        });
-	         
-	         
-	        VBox layout = new VBox(button);
-	        layout.setMargin(button, new Insets(20,20,20,20));
-	             
-	        Scene scene = new Scene(layout, 300, 200);  
-	 
-	        primaryStage.setTitle("Simple Search");
-	        primaryStage.setScene(st);   
-	        primaryStage.show();
+			/*
+			 * Constructs java window pane
+			 */
+			BorderPane root = new BorderPane();
 
+			/* txt input scene
+			 * 
+			 */
+			Label prompt = new Label("What stock overveiw would you like to see?");
+			TextField inputSearch = new TextField();
+			inputSearch.setPromptText("Enter stock symbol");
+			inputSearch.setFocusTraversable(false);
+			Button enter = new Button("Search");
 			
+			VBox vbox1 = new VBox(10);
+			vbox1.setAlignment(Pos.CENTER);
+			vbox1.getChildren().addAll(prompt);
+			HBox hbox1 = new HBox(10);
+			hbox1.setAlignment(Pos.CENTER);
+			hbox1.getChildren().addAll(inputSearch, enter);
+			
+			root.setTop(vbox1);
+			root.setCenter(hbox1);
+		  
+			//Setting the scene & the primary stage
+		    Scene scene2= new Scene(root, 300, 300);
+		    primaryStage.setTitle("Simple Search");
+		    primaryStage.setScene(scene2);
+		    primaryStage.centerOnScreen();
+		    primaryStage.show();
 
 
 		} catch(Exception e) {
