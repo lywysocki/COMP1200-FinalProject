@@ -57,10 +57,10 @@ public class Data {
 					name = (String) rawData[i].split(":")[1].subSequence(1,rawData[i].split(":")[1].length() - 1);
 				}
 
-		
+				
 		}
 		
-		String[] theData = {price, percentChange, change, symbol, name};
+		String[] theData = {symbol, name, price, change, percentChange};
 		return theData;
 	}
 

@@ -71,7 +71,7 @@ public class Main extends Application {
 				    final ObservableList<TableData> theData = FXCollections.observableArrayList(
 				    	//table order: sym, name, price, change, percent change
 				    	//array order: price, percentChange, change, symbol, name
-				    	new TableData(data[3], data[4], data[1], data[2], data[3])
+				    	new TableData(data[0], data[1], data[2], data[3], data[4])
 				    );
 				    
 				    //Creating columns for each data-field

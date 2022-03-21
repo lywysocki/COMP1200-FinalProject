@@ -5,7 +5,7 @@ import javafx.beans.property.SimpleStringProperty;
 public class TableData {
 	SimpleStringProperty price, name, percentChange, change, symbol;
 	
-	public TableData(String price, String name, String percentChange, String change, String symbol) {
+	public TableData(String symbol, String name, String price, String change, String percentChange) {
 		this.price = new SimpleStringProperty(price);
 		this.name = new SimpleStringProperty(name);
 		this.percentChange = new SimpleStringProperty(percentChange);
@@ -28,10 +28,10 @@ public class TableData {
 		 name.set(n);
 	}
 	 
-	public String getLastPrice() {
+	public String getPrice() {
 		return price.get();
 	}
-	public void setLastPrice(String p) {
+	public void setPrice(String p) {
 		price.set(p);
 	}
 	
