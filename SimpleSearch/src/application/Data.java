@@ -20,19 +20,25 @@ public class Data {
 		this.symbol = symbol;
 	}
 	
-	public String[] getData() throws IOException, InterruptedException {
+	public String[][] getData() throws IOException, InterruptedException {
 		/**
 		 * creates data object & gets txt file url 
 		 */	
 			String y = symbol;
-			String price = "";
-			String name = "";
-			String percentChange = "";
-			String change = "";
-			String symbol = "";
+			String[] strings = new String[1];
+			strings[0] = y;
+			if (y.contains(",")) {
+				strings = y.split(",");
+			}
+			String[] price = new String[strings.length];
+			String[] name = new String[strings.length];
+			String[] percentChange = new String[strings.length];
+			String[] change = new String[strings.length];
+			String[] symbol = new String[strings.length];
 			
+			for (int x = 0; x < strings.length; x++) {	
 			HttpRequest request = HttpRequest.newBuilder()
-					.uri(URI.create("https://yh-finance.p.rapidapi.com/market/v2/get-quotes?region=US&symbols="+y))
+					.uri(URI.create("https://yh-finance.p.rapidapi.com/market/v2/get-quotes?region=US&symbols="+strings[x]))
 					.header("x-rapidapi-host", "yh-finance.p.rapidapi.com")
 					.header("x-rapidapi-key", "0f53f57913msh0ea1556e79c9010p1e00b3jsnedf35e02234d")
 					.method("GET", HttpRequest.BodyPublishers.noBody())
@@ -41,29 +47,29 @@ public class Data {
 			String[] rawData = response.body().split(",");
 			for(int i = 0; i < rawData.length; i++) {
 				if (rawData[i].contains("regularMarketPrice")) {
-					price = rawData[i].split(":")[1];
+					price[x] = rawData[i].split(":")[1];
 				}
 				if (rawData[i].contains("regularMarketChangePercent")) {
-					percentChange = rawData[i].split(":")[1];
+					percentChange[x] = rawData[i].split(":")[1];
 				}
 				if (rawData[i].contains("regularMarketChange\"")) {
-					change = rawData[i].split(":")[1];
+					change[x] = rawData[i].split(":")[1];
 				}
 				if (rawData[i].contains("symbol")) {
-					symbol = (String) rawData[i].split(":")[1].subSequence(1,rawData[i].split(":")[1].length() - 3);
+					symbol[x] = (String) rawData[i].split(":")[1].subSequence(1,rawData[i].split(":")[1].length() - 3);
 		
 				}
 				if (rawData[i].contains("shortName")) {
-					name = (String) rawData[i].split(":")[1].subSequence(1,rawData[i].split(":")[1].length() - 1);
+					name[x] = (String) rawData[i].split(":")[1].subSequence(1,rawData[i].split(":")[1].length() - 1);
 				}
 
 				
 		}
+			}
 		
-		String[] theData = {symbol, name, price, change, percentChange};
+		String[][] theData = {symbol, name, price, change, percentChange};
 		return theData;
 	}
 
 
 }
-

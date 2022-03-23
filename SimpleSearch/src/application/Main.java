@@ -38,7 +38,7 @@ public class Main extends Application {
 			/* 
 			 * objects to be placed on stage
 			 */
-			Label prompt = new Label("What stock overveiw would you like to see?");
+			Label prompt = new Label("What stock overveiw would you like to see?\nYou can enter up to 4 stocks to compare separeated by commas(,)");
 			TextField inputSearch = new TextField();
 			inputSearch.setPromptText("Enter stock symbol");
 			inputSearch.setFocusTraversable(false);
@@ -50,7 +50,7 @@ public class Main extends Application {
 				@Override
 				public void handle(ActionEvent event) {
 				
-					String[] data = null;
+					String[][] data = null;
 					try {
 						data = new Data(inputSearch.getText()).getData();
 					} catch (IOException | InterruptedException e) {
@@ -67,12 +67,17 @@ public class Main extends Application {
 				    label.setFont(font);
 				    
 				    //Creating a table view
-				    TableView<TableData> table = new TableView<TableData>();
-				    final ObservableList<TableData> theData = FXCollections.observableArrayList(
+				    //TableView<TableData> table = new TableView<TableData>();
+				   // final ObservableList<TableData> theData = FXCollections.observableArrayList(
 				    	//table order: sym, name, price, change, percent change
 				    	//array order: price, percentChange, change, symbol, name
-				    	new TableData(data[0], data[1], data[2], data[3], data[4])
-				    );
+				    //	new TableData(data[0], data[1], data[2], data[3], data[4])
+				    //);
+				    
+				    TableView<TableData> table = new TableView<>();
+				    for (int i = 0; i < data[0].length; i++) {
+				        table.getItems().add(new TableData(data[0][i], data[1][i], data[2][i], data[3][i], data[4][i]));
+				    }
 				    
 				    //Creating columns for each data-field
 				    TableColumn symbolCol = new TableColumn("Symbol");
@@ -93,9 +98,11 @@ public class Main extends Application {
 					
 					//Adding data to the table
 					ObservableList<String> list = FXCollections.observableArrayList();
-					table.setItems(theData);
+					//table.setItems(theData);
 					table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 				    table.getColumns().addAll(symbolCol, nameCol, lastPriceCol, changeCol, pcentChangeCol);
+				   
+					
 				    
 				    //Setting the size of the table
 				    table.setMaxSize(1000, 1000);
@@ -149,4 +156,3 @@ public class Main extends Application {
 	}
 
 }
-
