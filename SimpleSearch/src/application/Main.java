@@ -25,7 +25,7 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 /**
- * @version 1.0.3 2022-03-21 GUI
+ * @version 1.1.0 2022-04-2 Completed
  */
 public class Main extends Application {
 	@Override
@@ -65,21 +65,14 @@ public class Main extends Application {
 				    Label label = new Label("Stock Trends:");
 				    Font font = Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12);
 				    label.setFont(font);
-				    
-				    //Creating a table view
-				    //TableView<TableData> table = new TableView<TableData>();
-				   // final ObservableList<TableData> theData = FXCollections.observableArrayList(
-				    	//table order: sym, name, price, change, percent change
-				    	//array order: price, percentChange, change, symbol, name
-				    //	new TableData(data[0], data[1], data[2], data[3], data[4])
-				    //);
-				    
+				   
+				    //adds data to table
 				    TableView<TableData> table = new TableView<>();
 				    for (int i = 0; i < data[0].length; i++) {
 				        table.getItems().add(new TableData(data[0][i], data[1][i], data[2][i], data[3][i], data[4][i]));
 				    }
 				    
-				    //Creating columns for each data-field
+				    //Creating columns & name for each data-field
 				    TableColumn symbolCol = new TableColumn("Symbol");
 				    symbolCol.setCellValueFactory(new PropertyValueFactory("symbol"));
 				    symbolCol.setPrefWidth(75);
@@ -96,14 +89,12 @@ public class Main extends Application {
 				    pcentChangeCol.setCellValueFactory(new PropertyValueFactory("percentChange"));
 					pcentChangeCol.setPrefWidth(100);
 					
-					//Adding data to the table
+					//Adds column names to table
 					ObservableList<String> list = FXCollections.observableArrayList();
-					//table.setItems(theData);
 					table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 				    table.getColumns().addAll(symbolCol, nameCol, lastPriceCol, changeCol, pcentChangeCol);
 				   
 					
-				    
 				    //Setting the size of the table
 				    table.setMaxSize(1000, 1000);
 				    					    
@@ -111,6 +102,7 @@ public class Main extends Application {
 				    vbox.setSpacing(5);
 				    vbox.setPadding(new Insets(10, 50, 50, 60));
 				    vbox.getChildren().addAll(label, table);
+				 
 				    //Setting the scene
 				    Scene scene2 = new Scene(vbox, 595, 230);
 				    primaryStage.setScene(scene2);
@@ -139,7 +131,6 @@ public class Main extends Application {
 		    primaryStage.setScene(scene1);
 		    primaryStage.centerOnScreen();
 		    primaryStage.show();
-
 
 		} catch(Exception e) {
 			e.printStackTrace();

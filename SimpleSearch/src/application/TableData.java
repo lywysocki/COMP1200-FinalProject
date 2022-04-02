@@ -5,6 +5,14 @@ import javafx.beans.property.SimpleStringProperty;
 public class TableData {
 	SimpleStringProperty price, name, percentChange, change, symbol;
 	
+	/**
+	 * Takes in data on stocks
+	 * @param symbol
+	 * @param name
+	 * @param price
+	 * @param change
+	 * @param percentChange
+	 */
 	public TableData(String symbol, String name, String price, String change, String percentChange) {
 		this.price = new SimpleStringProperty(price);
 		this.name = new SimpleStringProperty(name);

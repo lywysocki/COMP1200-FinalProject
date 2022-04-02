@@ -7,19 +7,25 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 /**
- * @version 1.0.1 2022-02-25 Initial implementation
+ * @version 1.1.0 2022-04-2 Completed
  */
 public class Data {
 	String symbol;
+	
 	/**
-	 * reads text to stock file
-	 * @param s
-	 * @return to Stock File
+	 * Takes in stock symbol
+	 * @param symbol
 	 */
 	public Data(String symbol) {
 		this.symbol = symbol;
 	}
 	
+	/**
+	 * Uses API and JSON parsing to collect stock data
+	 * @return theData - an ArrayList
+	 * @throws IOException
+	 * @throws InterruptedException
+	 */
 	public String[][] getData() throws IOException, InterruptedException {
 		/**
 		 * creates data object & gets txt file url 
